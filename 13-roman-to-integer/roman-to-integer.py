@@ -5,7 +5,7 @@ class Solution:
         for i in range(len(s) - 1):
             if dict_[s[i]] < dict_[s[i+1]]:
                 result -= dict_[s[i]]
-            else: #dict_[s[i]] < dict_[s[i+1]]
+            else: 
                 result += dict_[s[i]]
 
         result += dict_[s[-1]] # add the last one
