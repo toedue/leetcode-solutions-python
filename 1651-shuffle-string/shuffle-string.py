@@ -2,12 +2,11 @@ class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
         d = dict()
         result = ""
-        for i in range(len(indices)):
+        n = len(indices)
+        for i in range(n):
             d[indices[i]] = s[i]
 
-        sorted_d = dict(sorted(d.items()))
-
-        for key in sorted_d:
-            result += sorted_d[key]
+        for i in range(n):
+            result += d[i]
 
         return result
