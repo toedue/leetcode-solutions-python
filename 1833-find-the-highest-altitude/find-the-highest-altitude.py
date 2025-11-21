@@ -1,13 +1,9 @@
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
         point = 0
-        points = []
-        points.insert(0,point)
-
+        max_ = 0
         for i in gain:
             point += i
-            points.append(point)
-        
-        points.sort()
+            max_ = max(max_ , point)
 
-        return points[-1]
+        return max_
