@@ -12,7 +12,24 @@ class Solution:
             pointer1 += 1
             pointer2 -= 1
 
-        nums.sort()
+        # nums.sort()    
+        # to beat the O(nlogn)
+        l = 0
+        r = len(nums)-1
+        result = []
+
+        while (l<=r):
+            if nums[l] >= nums[r]:
+                result.append(nums[l])
+                l+=1
+            else:
+                result.append(nums[r])
+                r -= 1
+        return result[::-1]
+            
+
+
+
         return nums
 
 
