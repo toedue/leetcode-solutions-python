@@ -1,23 +1,19 @@
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
+        pointer1 = 0
+        pointer2 = len(nums) - 1
 
-        left =0
-        right = len(nums)-1
+        while pointer1 <= pointer2 :
+            nums[pointer1] = nums[pointer1]*nums[pointer1]
+             
+            if pointer1 != pointer2:  # avoid squaring same middle element twice
+                nums[pointer2] = nums[pointer2]*nums[pointer2]
 
-        result = []
+            pointer1 += 1
+            pointer2 -= 1
 
-        #[-4,-1,0,3,10]
+        nums.sort()
+        return nums
 
-        while (left<= right):
-            if abs(nums[left]) > abs(nums[right]):
-                result.append(nums[left]**2)
-                left+=1
-            else:
-                result.append(nums[right]**2)
-                right-=1
-                
-        result.reverse()
 
-        return result
-
-        
+      
