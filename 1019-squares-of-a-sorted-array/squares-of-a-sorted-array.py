@@ -12,7 +12,16 @@ class Solution:
                 result.append(nums[pointer1]**2)
                 pointer1+=1
 
-        return result[::-1]
+        l =0
+        r = len(result) -1
+        while (l<r):
+            result[l], result[r] = result[r], result[l]
+            l += 1
+            r -= 1
+        
+        return result
+
+
             
 
 
