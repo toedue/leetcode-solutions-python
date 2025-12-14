@@ -3,8 +3,8 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-
-        ptr1 = 0  
+        ptr1 = 0
+        
         for ptr2 in range(len(nums)):
             if nums[ptr2] != 0:
                 nums[ptr1], nums[ptr2] = nums[ptr2], nums[ptr1]
