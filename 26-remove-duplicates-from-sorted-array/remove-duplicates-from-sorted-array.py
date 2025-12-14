@@ -1,11 +1,15 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
-            
-        ptr1 = 1
-        for ptr2 in range(1,len(nums)):
-            if nums[ptr2] != nums[ptr2 - 1]: 
-                nums[ptr1] = nums[ptr2]
-                ptr1 += 1
-        return ptr1
+        unique = 0
+        counter = 1
+        for i in range(len(nums)):
+            if nums[i] != nums[unique]:
+                unique += 1
+                nums[i], nums[unique] = nums[unique], nums[i]
+                counter += 1
+        return counter
+
+
+"""
+But the total number of unique elements should be unique + 1, not just the number of new elements
+"""
