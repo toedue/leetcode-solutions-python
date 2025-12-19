@@ -1,10 +1,14 @@
 class Solution:
-    #abdulkadir
     def isCovered(self, ranges: List[List[int]], left: int, right: int) -> bool:
-        set_ = set(range(left,right+1))
-        for s,e in ranges:
-            for i in range(s,e+1):
-                set_.discard(i)
-                if len(set_) == 0:
-                    return True
-        return False
+        numbers = set()
+        for l,r in ranges:
+            for i in range(l, r+1):
+                numbers.add(i)
+
+        for j in range(left, right + 1):
+            if j not in numbers:
+                return False
+        return True
+
+
+            
