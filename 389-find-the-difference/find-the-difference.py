@@ -1,12 +1,16 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        t_sum =0
-        for i in t:
-            t_sum += ord(i)
+        ss =0
+        tt= 0
+        for i in range(len(s)):
+            ss+= ord(s[i])
+        
+        for i in range(len(t)):
+            tt+= ord(t[i])
 
-        for i in s:
-            t_sum -= ord(i)
-            
-        return chr(t_sum)
+        return chr(tt-ss)
+
+
+
 
         
