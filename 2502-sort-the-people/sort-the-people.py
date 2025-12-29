@@ -2,6 +2,7 @@ class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
         height_dict = {}
         sorted_names = []
+        #
 
         for i in range (len(names)):
             name = names[i]
