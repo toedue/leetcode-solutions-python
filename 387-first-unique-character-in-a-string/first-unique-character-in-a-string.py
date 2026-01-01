@@ -1,5 +1,6 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
+        #
         d = defaultdict(int)
         
         for char in s:
