@@ -1,7 +1,7 @@
 class Solution:
     def convertToBase7(self, num: int) -> str:
         if num == 0:
-            return "0"     # Base 7 of zero is simply "0"
+            return "0"      # Base 7 of zero is simply "0" 
 
         sign_mark = "-" if num < 0 else ""
 
