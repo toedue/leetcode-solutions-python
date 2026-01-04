@@ -1,5 +1,6 @@
 class Solution:
     def detectCapitalUse(self, word: str) -> bool:
+        #
         up = low = 0
         for c in word:
             if c.isupper():
