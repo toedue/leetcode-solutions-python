@@ -1,7 +1,7 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
          # Initialize binary search boundaries
-        # left starts at 0, right starts at x
+        ## left starts at 0, right starts at x
         left, right = 0, x
       
         # Binary search to find the integer square root
