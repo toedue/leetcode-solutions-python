@@ -1,6 +1,6 @@
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
-        #two pionters
+        # two pionters
 
         l = 0
         for r in range(len(nums)):
