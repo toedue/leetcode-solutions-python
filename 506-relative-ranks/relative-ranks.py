@@ -1,5 +1,6 @@
 class Solution:
     def findRelativeRanks(self, score: List[int]) -> List[str]:
+        #
         idexed_score = [(x,y) for y,x in enumerate(score)]
         output = [""] * len(score)
         sorted_idexed_score = sorted(idexed_score, key = lambda x: x[0], reverse = True)
