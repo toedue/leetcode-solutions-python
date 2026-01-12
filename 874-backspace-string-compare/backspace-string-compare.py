@@ -1,6 +1,6 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-
+#
         def remove_characters(x):
             stack = []
             for char in x:
