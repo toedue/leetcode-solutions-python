@@ -1,5 +1,6 @@
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
+        #
         x = bin(x)[2:].zfill(32)
         y = bin(y)[2:].zfill(32)
         ans = 0
