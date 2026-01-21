@@ -1,5 +1,5 @@
 class MyQueue:
-
+#
     def __init__(self):
         self.stack_a = []
         self.stack_b = []
