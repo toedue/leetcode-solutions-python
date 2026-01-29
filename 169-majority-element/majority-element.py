@@ -1,4 +1,5 @@
 class Solution:
+    #
     def majorityElement(self, nums: List[int]) -> int:
         dic = defaultdict(int)
         n = len(nums)
