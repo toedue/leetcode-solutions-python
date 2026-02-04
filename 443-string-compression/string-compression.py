@@ -5,6 +5,7 @@ class Solution:
         right = 0
         n = len(chars)
         s = ""
+        res = []
 
         while (right < n and left < n):
             while (right < n and chars[right] == chars[left]):
@@ -12,16 +13,18 @@ class Solution:
                 counter +=1
 
             if counter == 1:
-                s += chars[left]
+                res.append(chars[left])
                 left = right
                 counter = 0
             else:
-                s += chars[left]
-                s += str(counter)
+                res.append(chars[left])
+                res.append(str(counter))
                 left = right
                 counter = 0
+                
+        s = "".join(res)
 
         for i in range(len(s)):
             chars[i] = s[i]
-            
+
         return len(s)
