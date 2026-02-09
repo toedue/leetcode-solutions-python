@@ -3,7 +3,7 @@ class Solution:
         minimum = float(inf)
 
         my_dict = {}
-        result= []
+        # result= []
 
         for i in range(len(list2)):
             if list2[i] in list1:
@@ -11,10 +11,13 @@ class Solution:
                 minimum = min(minimum , (index+i))
                 my_dict[list2[i]] = (index+i)
 
-        for k, v in my_dict.items():
-            if v == minimum:
-                result.append(k)
+        # for k, v in my_dict.items():
+        #     if v == minimum:
+        #         result.append(k)
 
-        return result
+        # return result
+
+        return [k for k, v in my_dict.items() if v == minimum]
+
 
 
