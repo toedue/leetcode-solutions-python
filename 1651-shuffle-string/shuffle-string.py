@@ -1,12 +1,9 @@
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
-        d = dict()
-        result = ""
-        n = len(indices)
-        for i in range(n):
-            d[indices[i]] = s[i]
+        result = []
+        for char , ind in zip(s, indices):
+            result.append((char,ind))
 
-        for i in range(n):
-            result += d[i]
+        sort_s = sorted(result, key = lambda x: x[1])
 
-        return result
+        return "".join(x[0] for x in sort_s)
