@@ -1,9 +1,13 @@
+from collections import Counter
+
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        result = 0
-        for num in nums:
-            result ^= num
-        return result
+        frq = Counter(nums)
+
+        for key in frq.keys():
+            if frq[key] == 1:
+                return key
+
         
 """
 XOR = AB'+ A'B
