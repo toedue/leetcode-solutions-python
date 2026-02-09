@@ -1,23 +1,18 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        left = 0
-        right = len(nums) - 1
+        l = 0
+        r = len(nums)-1
 
-        num_index = []
-        
-        for i in range(len(nums)):
-            num_index.append((nums[i],i))
-            
-        num_index.sort()
+        d = [(v,k) for k,v in enumerate(nums)]
+        # return d
 
-        while (left <= right):
-            add = num_index[left][0] + num_index[right][0]
+        d.sort()
 
-            if add == target:
-                return [num_index[left][1],num_index[right][1]]
-            elif add > target:
-                right -= 1
-            elif add < target:
-                left += 1
-
-
+        while (l < r):
+            if d[l][0] + d[r][0] > target:
+                r -= 1
+            elif d[l][0] + d[r][0] < target:
+                l+= 1
+            elif d[l][0] + d[r][0] == target:
+                return [d[l][1] , d[r][1]]
+ 
