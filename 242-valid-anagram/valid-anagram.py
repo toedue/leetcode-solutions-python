@@ -1,28 +1,10 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        d1 = {}
-        d2 = {}
-        for i in range(len(s)):
-            if s[i] in d1:
-                d1[s[i]] += 1
-            else:
-                d1[s[i]] = 1
-        for i in range(len(t)):
-            if t[i] in d2:
-                d2[t[i]] += 1
-            else:
-                d2[t[i]] = 1
-        
-        
+        sorted_s = "".join(sorted(s))
+        sorted_t = "".join(sorted(t))
 
-        for char in d1:
-            if d1.get(char, 0) != d2.get(char, 0):
-                return False
-
-            for char in d2:
-                if d1.get(char, 0) != d2.get(char, 0):
-                    return False
-
-        return True
-
+        if sorted_s == sorted_t:
+            return True
+        else:
+            return False
     
