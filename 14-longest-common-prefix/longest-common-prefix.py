@@ -1,27 +1,27 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        # prefix = strs[0]
 
-        # for i in range(len(prefix)):
-        #     for word in strs:
-        #         if i == len(word) or prefix[i] != word[i]:
-        #             return prefix[:i]
-        # return prefix
-
-        result = ""
-        strs = sorted(strs)
+        # lexicographical sort
+        strs.sort()
 
         first = strs[0]
         last = strs[-1]
+        arr =[]
 
+        # edge case: empty list
+        if not strs:
+            return ""
 
+        # edge case: if any string is empty
+        if "" in strs:
+            return ""
 
-        for i in range(min(len(first),len(last))):
-            if(first[i]!=last[i]):
-                return result
-            result +=first[i]
-        
-        return result 
+        for i , j in zip(first, last):
+            if i == j:
+                arr.append(i)
+            else:
+                break
 
+        return "".join(arr)
 
         
