@@ -1,17 +1,19 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
-        romans = []
-        thousands = num // 1000
-        hundreds = (num%1000) // 100
-        tens = (num % 100) // 10
-        ones = (num) % 10
+        numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        romans = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV","I"]
 
-        roman_thousands = ["", "M", "MM", "MMM"]
-        roman_hundreds  = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
-        roman_tens      = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
-        roman_ones      = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+        result = []
+        i = 0
+        while num > 0:
+            if num >= numbers[i]:
+                result.append(romans[i])
+                num -= numbers[i]
+            else:
+                i += 1
+                
+        return "".join(result)
 
-        return f"{roman_thousands[thousands]}{roman_hundreds[hundreds]}{roman_tens[tens]}{ roman_ones[ones]}"
 
 
 
