@@ -10,7 +10,14 @@ class Solution:
 
         copy = [row[:] for row in matrix]
 
-
+        #transpose
         for i in range(n):
             for j in range(n):
-                matrix[i][j] = copy[n - 1 - j][i]
+                matrix[i][j] = copy[j][i]
+
+        #reverse the rows
+
+        for row in matrix:
+            row.reverse()
+        
+
