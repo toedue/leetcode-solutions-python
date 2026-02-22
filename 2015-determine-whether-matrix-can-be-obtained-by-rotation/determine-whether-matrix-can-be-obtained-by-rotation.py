@@ -1,29 +1,42 @@
 class Solution:
     def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
-        for j in range (4):
+        row = len(mat)
+        col= len(mat[0])
 
-            if mat == target:
+        if mat == target:
                 return True
+        temp = [[0]*col for _ in range(row)]
+        # first rotation
+        for i in range(row):
+            for j in range(col):
+                temp[j][col-i-1] = mat[i][j]
 
-            left, right = 0, len(mat)-1
+        if temp == target:
+            return True
+        
+        mat = temp
+        
+        temp = [[0]*col for _ in range(row)]
+        # second rotation
+        for i in range(row):
+            for j in range(col):
+                temp[j][col-i-1] = mat[i][j]
 
-            while (left < right):
-                for i in range (right - left):
-                    top, bottom = left , right
-                    # first store thr top left to a temp variable
-                    topleft = mat [top][left+i]
+        if temp == target:
+            return True
+        
+        mat = temp
 
-                    mat[top][left+i] = mat[bottom-i][left]
+        temp = [[0]*col for _ in range(row)]
+        # third rotation
+        for i in range(row):
+            for j in range(col):
+                temp[j][col-i-1] = mat[i][j]
 
-                    mat[bottom-i][left] = mat[bottom][right-i]
+        if temp == target:
+            return True
 
-                    mat[bottom][right-i] = mat[top+i][right]
+        return False
 
-                    mat[top+i][right]= topleft
-
-                left+=1
-                right-=1
-
-        return (mat == target)
 
 
