@@ -3,23 +3,24 @@ class Solution:
         #sliding window
         left = 0
         set_ = set()
-        current = 0
-        best = 0
+        current_size = 0
+        maxx_size = 0
 
         for right in range(len(s)):
             if s[right] not in set_:
                 set_.add(s[right])
-                current = (right - left) + 1
+                current_size = (right - left) + 1
             else:
-                # remove characters from the left until duplicate is gone
-                while s[right] in set_:
+                while(s[right] in set_):
                     set_.remove(s[left])
                     left += 1
                 set_.add(s[right])
-                current = (right - left) + 1
-            best = max (best, current)
+                current_size = (right - left) + 1
 
-        return best
+
+            maxx_size = max(maxx_size, current_size)
+
+        return maxx_size
 
 
 
