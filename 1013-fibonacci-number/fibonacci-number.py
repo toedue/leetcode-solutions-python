@@ -4,8 +4,8 @@ class Solution:
             return 0
         elif n == 1:
             return 1
-        elif n > 1:
-            result = self.fib(n-1) + self.fib(n-2)
-            return result
+    
+        result = self.fib(n-1) + self.fib(n-2)
+        return result
         
         
