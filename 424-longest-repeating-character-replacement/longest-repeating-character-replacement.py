@@ -2,26 +2,24 @@ from collections import defaultdict
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        freqTrack = defaultdict(int)
 
+        freq = defaultdict(int)
         left = 0
-        maxFreq = 0
-        maxLength = 0 
+        maxLength = 0
 
         for right in range(len(s)):
-            freqTrack[s[right]] += 1
-            maxFreq = max(maxFreq,freqTrack[s[right]])
 
-            windowSize = right - left + 1
+            freq[s[right]] += 1
 
-            if windowSize - maxFreq > k:
-                freqTrack[s[left]] -= 1
+            # recompute the real max frequency
+            maxFreq = max(freq.values())
+
+            # if window invalid, shrink it
+            while (right - left + 1) - maxFreq > k:
+                freq[s[left]] -= 1
                 left += 1
+                maxFreq = max(freq.values())
 
             maxLength = max(maxLength, right - left + 1)
 
-
-        return maxLength 
-            
-
-
+        return maxLength
