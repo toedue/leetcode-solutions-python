@@ -1,37 +1,33 @@
+from collections import deque
+
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
-
-        # min-queue 
-        min_queue = deque()
-        # max_queue
-        max_queue = deque() 
-
-        left = 0
+        max_deque = deque()
+        min_deque = deque()
         result = 0
+        left = 0
 
         for right in range(len(nums)):
-            # min_queue
-            while min_queue and min_queue[-1] > nums[right]:
-                min_queue.pop()
-            min_queue.append(nums[right])
-            
-            # max_queue
-            while max_queue and max_queue[-1] < nums[right]:
-                max_queue.pop()
-            max_queue.append(nums[right])
-            
-            # operation
-            while (max_queue[0] - min_queue[0]) > limit:
-                first_num = nums[left]
-                if first_num == max_queue[0]:
-                    max_queue.popleft()
-                if first_num == min_queue[0]:
-                    min_queue.popleft()
-                
-                left += 1
-            result = max(result, right - left + 1)
-            
-        return result 
-            
-            
-                
+            while max_deque and nums[right] > nums[max_deque[-1]]:
+                max_deque.pop()
+            max_deque.append(right)
+
+            while min_deque and nums[right] < nums[min_deque[-1]]:
+                min_deque.pop()
+            min_deque.append(right)
+
+            while  nums[max_deque[0]] - nums[min_deque[0]] > limit:
+                if max_deque[0] == left:
+                    max_deque.popleft()
+                if min_deque[0] == left:
+                    min_deque.popleft()
+                left +=1 
+
+            window = right - left + 1
+            result = max(result, window)
+
+        return result
+
+
+
+
