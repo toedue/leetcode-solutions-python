@@ -5,8 +5,13 @@ class Solution:
         nums.sort()
         result = []
 
-        for i in range(1,len(nums)):
-            if nums[i-1] == nums[i]:
-                result.append(nums[i])
+        for num in nums:
+            index = abs(num) - 1
+
+            if nums[index] < 0:
+                result.append(abs(num))
+
+            else:
+                nums[index] = -nums[index]
 
         return result
