@@ -1,18 +1,22 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
-        circle = [i for i in range(1,n+1)]
+        def findTheWinner(n):
+            # base case
+            # only one person left, they are at position/index 0
+            if n == 1:
+                return 0
 
-        print(circle)
+            # get winner position in smaller circle
+            smaller_winner = findTheWinner(n-1)
 
-        index = 0
-        while len(circle) > 1:
+            # translate that position back to current circle
+            current_winner = (smaller_winner + k) % n
 
-            index = (index + (k-1)) % len(circle)
+            return current_winner
 
-            circle.pop(index)
+        # findTheWinner gives 0-indexed position so add 1 to get actual friend number
+        return findTheWinner(n) + 1
 
-            # index now automatically points to next friend
-            if index == len(circle):
-                index = 0
 
-        return circle[index]
+            
+
