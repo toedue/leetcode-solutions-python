@@ -1,18 +1,24 @@
 class Solution:
     def lastRemaining(self, n: int) -> int:
-        head = 1
-        step = 1
-        remaining = n
-        left_to_right = True
+       
+        def solve(n, left_to_right):
 
-        while remaining > 1:
-            if left_to_right or remaining % 2 == 1:
-                head += step
-            step *= 2
-            remaining //= 2
+            #base case
+            if n == 1:
+                return 1
 
-            left_to_right = not left_to_right
+            if left_to_right:
 
-        return head
+                return 2*solve(n//2, False)
+            else: 
+                #right_to_left
+                if n % 2 == 0: # leftmost survives
+                    return 2*solve(n//2, True) - 1
 
-        
+                return 2*solve(n//2, True)
+
+
+        return solve(n, True)
+
+
+
