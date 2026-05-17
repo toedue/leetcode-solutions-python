@@ -1,18 +1,18 @@
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        map = {0:1}
-        count = 0
+        count = defaultdict(int)
+        count[0] = 1
 
-        for i in range(1,len(nums)):
-            nums[i] += nums[i-1]
+        prefix_sum = 0
+        ans = 0
 
-        print(nums)
+        for num in nums:
+            prefix_sum += num
 
-        for i in range(len(nums)):
-            if nums[i]%k not in map:
-                map[nums[i]%k] = 1
-            else:
-                count += map[nums[i]%k]
-                map[nums[i]%k] += 1
+            remainder = prefix_sum % k
 
-        return count
+            ans += count[remainder]
+
+            count[remainder] += 1
+
+        return ans
