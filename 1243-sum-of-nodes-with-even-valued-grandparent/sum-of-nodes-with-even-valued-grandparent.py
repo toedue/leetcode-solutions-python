@@ -1,5 +1,3 @@
-from collections import deque
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -8,23 +6,21 @@ from collections import deque
 #         self.right = right
 class Solution:
     def sumEvenGrandparent(self, root: Optional[TreeNode]) -> int:
+        self.total = 0
 
-        total = 0
+        def traverse(curr_node, parent, grand_parent):
+            if not curr_node:
+                return 
 
-        queue = deque()
-        queue.append((root, -1, -1))
+            if grand_parent and grand_parent.val % 2 == 0:
+                self.total += curr_node.val
+            
+            traverse(curr_node.left, curr_node, parent)
+            traverse(curr_node.right, curr_node, parent)
 
-        while queue:
-            node, parent_val,grandparent_val = queue.popleft()
+            
 
-            if grandparent_val !=-1 and grandparent_val % 2 == 0:
-                total += node.val
+        traverse(root, None, None)
+        return self.total
 
-            if node.left:
-                queue.append((node.left, node.val, parent_val))
-
-            if node.right:
-                queue.append((node.right, node.val, parent_val))
-
-        return total 
         
