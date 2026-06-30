@@ -3,26 +3,27 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        m = len(matrix)
+        n = len(matrix[0])
 
-        row = len(matrix)
-        col = len(matrix[0])
-        copy = [row[:] for row in matrix]
+        first_col_zero = False
 
-        for i in range(row):
-            for j in range(col):
+        # Step 1: Use first row and first column as markers
+        for i in range(m):
+            if matrix[i][0] == 0:
+                first_col_zero = True
+
+            for j in range(1, n):
                 if matrix[i][j] == 0:
+                    matrix[i][0] = 0
+                    matrix[0][j] = 0
 
-                    # set entire row to 0
-                    for r in range(row):
-                        copy[r][j] = 0
+        # Step 2: Traverse backwards and update cells
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, 0, -1):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
 
-                    # set entire column to 0
-                    for c in range(col):
-                        copy[i][c] = 0
-
-        for i in range(row):
-            for j in range(col):
-                matrix[i][j] = copy[i][j]
-
-
+            if first_col_zero:
+                matrix[i][0] = 0
         
